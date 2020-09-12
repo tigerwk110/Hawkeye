@@ -9,6 +9,7 @@ RUN add-apt-repository -y "deb http://openresty.org/package/debian stretch openr
 RUN apt-get update
 RUN apt-get install -y openresty
 COPY ./deploy /Hawkeye/deploy
+RUN pip install --upgrade pip
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /Hawkeye/deploy/pyenv/requirements.txt -U
 RUN cp /Hawkeye/deploy/nginx/*.conf /usr/local/openresty/nginx/conf/
 RUN cp /Hawkeye/deploy/supervisor/*.conf /etc/supervisor/conf.d/
